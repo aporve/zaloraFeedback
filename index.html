@@ -37,6 +37,24 @@
             background: rgb(49, 49, 49);  
             color: white; 
         }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none
+        }
+
+        .main2 {
+            height: 100%;
+        }
+
+        .greeting{
+            text-align: center;
+            font-size: revert;
+            font-weight: 400;
+        }
     </style>
   </head>
   <body>
@@ -44,9 +62,9 @@
    <section class="wrapper container-fluid d-flex justify-content-center align-items-center vh-100">
 
             <div class="main" style="position: relative;">
-                <div class="row w-100 m-0" style="position: absolute;">
-                    <div class="col-lg-12 d-flex justify-content-center bg-white">
-                        <h6 style="font-weight: bold;">Rate your Conversation</h6>
+                <div class="row w-100 h-100 m-0" style="position: absolute;">
+                    <div class="hide col-lg-12 d-flex justify-content-center bg-white">
+                        <h6 id="main1" style="font-weight: bold;">Rate your Conversation</h6>
                     </div> 
                     <!-- <hr style="border: ipx solid gray;"> -->
                     <form action="#" id="form">
@@ -80,6 +98,9 @@
                         </div>
 
                    </form>
+                   <div id="main2" class="greeting hide col-lg-12 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p>Thank you For the Feedback</p>
+                   </div>
                 </div>
             </div>
 
