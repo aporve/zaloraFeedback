@@ -19,29 +19,8 @@ function details() {
     data.submitDetails = submitDetails;
     console.error("Data", data);
     console.log("Data", data);
-    // document.getElementById('feedback').value = ''
-    // $("#form").trigger("reset");
-
-    // var feedbackDetails = {}
-    // var raw = JSON.stringify({
-    //     "details": {
-    //     "companyName": "ZALORA",
-    //     "feedback-emoji": feedback,
-    //     "user-feedback": document.getElementById('feedback').value
-    //     }
-    // });
-
-    // feedbackDetails['data'] = raw;
-    // window.parent.postMessage(JSON.stringify({
-    //     event_code: 'ym-client-event', data: JSON.stringify({
-    //       event: {
-    //         code: "feedback",
-    //         data: feedbackDetails,
-      
-    //       }
-    //     })
-    //   }), '*');
-
+    document.getElementById('feedback').value = ''
+    $("#form").trigger("reset");
     
     var feedbackDetails = {}
     var raw = JSON.stringify({
