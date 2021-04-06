@@ -2,16 +2,12 @@ let feedback;
 let data = {};
 
 function good() {
-    $("#dropdown").hide();
-    $("#textArea").show();
     document.getElementById('feedback').focus();
     feedback = 'good';
     console.error("feedback ----->", feedback );
 }
 
 function bad() {
-    $("#textArea").hide();
-    $("#dropdown").show();
     document.getElementById('feedback').focus();
     feedback = 'bad';
     console.error( "feedback ----->", feedback);
