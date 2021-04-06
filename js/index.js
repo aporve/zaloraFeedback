@@ -23,8 +23,8 @@ function details() {
     data.submitDetails = submitDetails;
     console.error("Data", data);
     console.log("Data", data);
-    // $("#main1").hide();
-    // $("#form").hide();
+    $("#main1").hide();
+    $("#form").hide();
     $("#main2").show();
 
     document.getElementById('feedback').value = ''
