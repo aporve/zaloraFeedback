@@ -2,12 +2,16 @@ let feedback;
 let data = {};
 
 function good() {
+    $("#dropdown").hide();
+    $("#textArea").show();
     document.getElementById('feedback').focus();
     feedback = 'good';
     console.error("feedback ----->", feedback );
 }
 
 function bad() {
+    $("#textArea").hide();
+    $("#dropdown").show();
     document.getElementById('feedback').focus();
     feedback = 'bad';
     console.error( "feedback ----->", feedback);
@@ -19,8 +23,8 @@ function details() {
     data.submitDetails = submitDetails;
     console.error("Data", data);
     console.log("Data", data);
-    $("#main1").hide();
-    $("#form").hide();
+    // $("#main1").hide();
+    // $("#form").hide();
     $("#main2").show();
 
     document.getElementById('feedback').value = ''
