@@ -28,13 +28,13 @@
         }
 
         .btn1 {
-            background: gray;
+            background: rgb(165, 164, 164);
             border: 1px solid gray;
             border-radius: 2px;
         }
     
         .btn1:hover {
-            background: rgb(49, 49, 49);  
+            background: rgb(165, 164, 164);
             color: white; 
         }
 
@@ -64,19 +64,22 @@
 
             <div class="main" style="position: relative;">
                 <div class="row w-100 h-100 m-0" style="position: absolute;">
-                    <div class="col-lg-12 d-flex justify-content-center bg-white p-1">
-                        <h6 id="main1" style="font-weight: bold;">Rate your Conversation</h6>
+                    <div class="col-lg-12 d-flex justify-content-center bg-white" style="height: 10%;">
+                        <h6 class="p-2" id="main1" style="font-weight: bold;">Rate your Conversation</h6>
                     </div> 
                     <!-- <hr style="border: ipx solid gray;"> -->
                     <form class="show" action="#" id="form">
                         <div class="col-lg-12 m-0 pt-1">
                             <ul style="display: inline-block; list-style: none;" >
                                 <table>
-                                    <tr><th>
-                                        <img class="mx-2" src="./img/emoji-3.png" width="90" alt="good" onclick="good()">
+                                    <tr>
+                                        <th>
+                                            <!-- <p class="m-0" style="font-size: 5rem;" onclick="good()">😄</p> -->
+                                            <img class="mx-2" src="./img/emoji-3.png" width="90" alt="good" onclick="good()">
                                             <!-- <span style='font-size:80px; border-radius: 50%; border-top-left-radius: -1em ;' onclick="good()">&#128515;</span> -->
                                         </th>
                                         <th>
+                                            <!-- <p class="m-0" style="font-size: 5rem;" onclick="bad()">😔</p> -->
                                             <img class="mx-2" src="./img/emoji-2.png" width="90" alt="bad" style=" border-radius: 50%" onclick="bad()">
                                             <!-- <span style='font-size:80px;'  onclick="bad()">&#128524;</span> -->
                                         </th>
@@ -92,22 +95,37 @@
                                 </table>
                             </ul>
                         </div> 
-                        <div class="col-lg-12 d-flex justify-content-center">
+                       <div class="hide" id="textArea">
+                        <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
                             <textarea id="feedback" placeholder="Enter your Feedback here.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
+                        </div>
+                       </div>
+
+                        <div class="hide" id="dropdown">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <select name="cars" id="cars" class="w-75" style="overflow:auto;">
+                                    <option value="Feedback">The agent need to be more helpful</option>
+                                    <option value="volvo">The agent Need to improve the product knowledge</option>
+                                    <option value="saab">Inprove the resolution time</option>
+                                    <option value="opel">Improve the reply time</option>
+                                    <option value="audi">Disagree with the policy</option>
+                                    <option value="audi">Other Feedback</option>
+                                  </select>
+                            </div>
                         </div>
 
                         <div class="col-lg-12 d-flex justify-content-center my-2">
                             <button class="btn1 w-75" type="button" onclick="return details()" style="font-weight: bold;">Submit</button>
                         </div>
                    </form>
-                  <div class="greeting  col-lg-12 d-flex justify-content-center align-items-center" style="height: 100%;">
+                  <!-- <div class="greeting  col-lg-12 d-flex justify-content-center align-items-center" style="height: 100%;">
                         <p id="main2" class="hide">Thank you For the Feedback</p>
-                  </div>
+                  </div> -->
                 </div>
             </div>
 
    </section>
-   <script src="./js/index.js"></script>
+    <script src="./js/index.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/8bbf807456.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
