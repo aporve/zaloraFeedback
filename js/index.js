@@ -26,25 +26,25 @@ function details() {
     document.getElementById('feedback').value = ''
     $("#form").trigger("reset");
     
-    var feedbackDetails = {}
-    var raw = JSON.stringify({
-        "details": {
-        "companyName": "ZALORA",
-        "feedback-emoji": feedback,
-        "user-feedback": document.getElementById('feedback').value
-        }
-    });
+    // var feedbackDetails = {}
+    // var raw = JSON.stringify({
+    //     "details": {
+    //     "companyName": "ZALORA",
+    //     "feedback-emoji": feedback,
+    //     "user-feedback": document.getElementById('feedback').value
+    //     }
+    // });
 
-    feedbackDetails.data = raw;
-    window.parent.postMessage(JSON.stringify({
-        event_code: 'ym-client-event', data: JSON.stringify({
-            event: {
-            code: "feedback",
-            data: feedbackDetails,
+    // feedbackDetails.data = raw;
+    // window.parent.postMessage(JSON.stringify({
+    //     event_code: 'ym-client-event', data: JSON.stringify({
+    //         event: {
+    //         code: "feedback",
+    //         data: feedbackDetails,
         
-            }
-        })
-    }), '*');
+    //         }
+    //     })
+    // }), '*');
 
-    console.log("Feedback Details ---->",feedbackDetails);
+    // console.log("Feedback Details ---->",feedbackDetails);
 }
