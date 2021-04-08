@@ -2,7 +2,14 @@ let feedback;
 let data = {};
 let feedback2;
 
+// // feedback2 = document.getElementById("feedback2").value;
 
+// if(feedback2 != 'f1') {
+//     feedback2 = document.getElementById("feedback2").value;
+//     console.error(feedback2, "feedback2");
+//     $("#dropdown").hide();
+//     $("#textArea").show();
+// }
 
 // if(feedback2 !== '') {
 //     console.error(feedback2, "feedback2");
@@ -25,6 +32,15 @@ function bad() {
     console.error( "feedback ----->", feedback);
 }
 
+function triggerText() {
+     feedback2 = document.getElementById("feedback2").value;
+        console.error(feedback2, "feedback2");
+        if(feedback2 == 'f7') {
+            $("#dropdown").hide();
+            $("#textArea").show();
+        }
+   
+}
 
 
 function details() {
@@ -37,12 +53,12 @@ function details() {
     // $("#form").hide();
     $("#main2").show();
 
-    feedback2 = document.getElementById("feedback2").value;
-    console.error(feedback2, "feedback2");
-    if(feedback2 == 'f7') {
-        $("#dropdown").hide();
-        $("#textArea").show();
-    }
+    // feedback2 = document.getElementById("feedback2").value;
+    // console.error(feedback2, "feedback2");
+    // if(feedback2 == 'f7') {
+    //     $("#dropdown").hide();
+    //     $("#textArea").show();
+    // }
    
 
     document.getElementById('feedback').value = ''
