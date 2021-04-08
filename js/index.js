@@ -1,5 +1,13 @@
 let feedback;
 let data = {};
+let feedback2;
+
+
+
+// if(feedback2 !== '') {
+//     console.error(feedback2, "feedback2");
+// }
+
 
 function good() {
     $("#dropdown").hide();
@@ -17,6 +25,8 @@ function bad() {
     console.error( "feedback ----->", feedback);
 }
 
+
+
 function details() {
     submitDetails = document.getElementById('feedback').value;
     data.feedback = feedback;
@@ -26,6 +36,14 @@ function details() {
     // $("#main1").hide();
     // $("#form").hide();
     $("#main2").show();
+
+    feedback2 = document.getElementById("feedback2").value;
+    console.error(feedback2, "feedback2");
+    if(feedback2 == 'f7') {
+        $("#dropdown").hide();
+        $("#textArea").show();
+    }
+   
 
     document.getElementById('feedback').value = ''
     $("#form").trigger("reset");
