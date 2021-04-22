@@ -1,30 +1,16 @@
 let feedback;
 let data = {};
 let feedback2;
-
-// // feedback2 = document.getElementById("feedback2").value;
-
-// if(feedback2 != 'f1') {
-//     feedback2 = document.getElementById("feedback2").value;
-//     console.error(feedback2, "feedback2");
-//     $("#dropdown").hide();
-//     $("#textArea").show();
-// }
-
-// if(feedback2 !== '') {
-//     console.error(feedback2, "feedback2");
-// }
+let radioFeedback;
 
 
 function good() {
-    $("#dropdown").hide();
-    $("#textArea").show();
-    document.getElementById('feedback').focus();
     feedback = 'good';
     console.error("feedback ----->", feedback );
 }
 
 function bad() {
+    $('#emotican').hide();
     $("#textArea").hide();
     $("#dropdown").show();
     document.getElementById('feedback').focus();
@@ -32,27 +18,39 @@ function bad() {
     console.error( "feedback ----->", feedback);
 }
 
-function triggerText() {
-     feedback2 = document.getElementById("feedback2").value;
-        console.error(feedback2, "feedback2");
-        if(feedback2 == 'f7') {
-            $("#dropdown").hide();
-            $("#textArea").show();
-        }
+function triggerText(value) {
+    // alert(' trigger text area')
+    radioFeedback = $('input[name="reason"]:checked').val();
+    // value = document.getElementById(value).value;
+    console.error('radioFeedback --->',radioFeedback);
+   
+    if(value == 'F6') {
+        $("#dropdown").hide();
+        $("#textArea").show();
+        $("#textArea").css('margin-top', '50px')
+    }
+
+
+    //  feedback2 = document.getElementById("feedback2").value;
+    //     console.error(feedback2, "feedback2");
+    //     if(feedback2 == 'F1') {
+    //         $("#dropdown").hide();
+    //         $("#textArea").show();
+    //     }
    
 }
+
 
 
 function details() {
     submitDetails = document.getElementById('feedback').value;
     data.feedback = feedback;
+    data.radioButtonValue = radioFeedback
     data.submitDetails = submitDetails;
     console.error("Data", data);
     console.log("Data", data);
-    // $("#main1").hide();
-    // $("#form").hide();
-    $("#main2").show();
 
+    // $("#main2").show();
     // feedback2 = document.getElementById("feedback2").value;
     // console.error(feedback2, "feedback2");
     // if(feedback2 == 'f7') {
@@ -69,7 +67,7 @@ function details() {
         "details": {
         "companyName": "ZALORA",
         "feedback-emoji": feedback,
-        "user-feedback": document.getElementById('feedback').value
+        "RadioValue": radioFeedback
         }
     });
 
