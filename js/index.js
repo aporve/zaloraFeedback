@@ -2,17 +2,24 @@ let feedback;
 let data = {};
 let feedback2;
 let radioFeedback;
+let textareaValue ;
 
 
 function good() {
     feedback = 'good';
+    $('#emotican').hide();
+    $("#textArea").show();
+    $("#textArea").css('margin-top', '50px')
+    $('#submitBtn').show();
     console.error("feedback ----->", feedback );
+
 }
 
 function bad() {
     $('#emotican').hide();
     $("#textArea").hide();
     $("#dropdown").show();
+    $('#submitBtn').hide();
     document.getElementById('feedback').focus();
     feedback = 'bad';
     console.error( "feedback ----->", feedback);
@@ -28,6 +35,7 @@ function triggerText(value) {
         $("#dropdown").hide();
         $("#textArea").show();
         $("#textArea").css('margin-top', '50px')
+        $('#submitBtn').show();
     }
 
 
@@ -50,6 +58,9 @@ function details() {
     console.error("Data", data);
     console.log("Data", data);
 
+    textareaValue = document.getElementById('feedback').value;
+    console.error('TextArea Value---->',textareaValue)
+
     // $("#main2").show();
     // feedback2 = document.getElementById("feedback2").value;
     // console.error(feedback2, "feedback2");
@@ -59,18 +70,20 @@ function details() {
     // }
    
 
-    document.getElementById('feedback').value = ''
-    $("#form").trigger("reset");
-    
+   
     var feedbackDetails = {}
     var raw = JSON.stringify({
         "details": {
         "companyName": "ZALORA",
         "feedback-emoji": feedback,
-        "RadioValue": radioFeedback
+        "radioValue": radioFeedback,
+        "textareaValue" : textareaValue
         }
     });
 
+    document.getElementById('feedback').value = ''
+    $("#form").trigger("reset");
+    
     feedbackDetails.data = raw;
     window.parent.postMessage(JSON.stringify({
         event_code: 'ym-client-event', data: JSON.stringify({
