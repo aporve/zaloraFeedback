@@ -75,7 +75,7 @@ function details() {
     var raw = JSON.stringify({
         "details": {
         "companyName": "ZALORA",
-        "feedback-emoji": feedback,
+        "feedbackEmoji": feedback,
         "radioValue": radioFeedback,
         "textareaValue" : textareaValue
         }
