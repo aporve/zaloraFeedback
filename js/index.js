@@ -19,7 +19,7 @@ function bad() {
     $('#emotican').hide();
     $("#textArea").hide();
     $("#dropdown").show();
-    $('#submitBtn').hide();
+    $('#submitBtn').show();
     document.getElementById('feedback').focus();
     feedback = 'bad';
     console.error( "feedback ----->", feedback);
