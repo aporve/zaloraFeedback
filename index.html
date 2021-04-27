@@ -58,9 +58,9 @@
         }
 
         label {
-    /* display: inline-block; */
-    display: inline;
-}
+        /* display: inline-block; */
+        display: inline;
+        }
     </style>
   </head>
   <body>
@@ -72,7 +72,6 @@
                     <div class="col-lg-12 d-flex justify-content-center bg-white" style="height: 10%;">
                         <h6 class="p-2" id="main1" style="font-weight: bold;">Rate your Conversation</h6>
                     </div> 
-                    <!-- <hr style="border: ipx solid gray;"> -->
                     <form class="show" action="#" id="form">
                         <div class="col-lg-12 m-0 pt-1" id="emotican">
                             <ul class="my-5 p-0" style="width: 100%; display: inline-block; list-style: none; margin: 50px 0 0 0;" >
@@ -80,13 +79,9 @@
                                     <tr>
                                         <th>
                                             <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="good()">😄</p>
-                                            <!-- <img class="mx-2" src="./img/emoji-3.png" width="90" alt="good" onclick="good()"> -->
-                                            <!-- <span style='font-size:80px; border-radius: 50%; border-top-left-radius: -1em ;' onclick="good()">&#128515;</span> -->
                                         </th>
                                         <th>
                                             <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="bad()">😔</p>
-                                            <!-- <img class="mx-2" src="./img/emoji-2.png" width="90" alt="bad" style=" border-radius: 50%" onclick="bad()"> -->
-                                            <!-- <span style='font-size:80px;'  onclick="bad()">&#128524;</span> -->
                                         </th>
                                     </tr>
                                     <tr>
@@ -136,9 +131,90 @@
             </div>
 
    </section>
-    <script src="./js/index.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/8bbf807456.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        let feedback;
+        let data = {};
+        let feedback2;
+        let radioFeedback;
+        let textareaValue ;
+
+
+        function good() {
+            feedback = 'good';
+            $('#emotican').hide();
+            $("#textArea").show();
+            $("#textArea").css('margin-top', '50px')
+            $('#submitBtn').show();
+            console.error("feedback ----->", feedback );
+
+        }
+
+        function bad() {
+            $('#emotican').hide();
+            $("#textArea").hide();
+            $("#dropdown").show();
+            $('#submitBtn').show();
+            document.getElementById('feedback').focus();
+            feedback = 'bad';
+            console.error( "feedback ----->", feedback);
+        }
+
+        function triggerText(value) {
+            radioFeedback = $('input[name="reason"]:checked').val();
+            console.error('radioFeedback --->',radioFeedback);
+        
+            if(value == 'F6') {
+                $("#dropdown").hide();
+                $("#textArea").show();
+                $("#textArea").css('margin-top', '50px')
+                $('#submitBtn').show();
+            }
+        
+        }
+
+
+
+        function details() {
+            submitDetails = document.getElementById('feedback').value;
+            data.feedback = feedback;
+            data.radioButtonValue = radioFeedback
+            data.submitDetails = submitDetails;
+            console.error("Data", data);
+            console.log("Data", data);
+
+            textareaValue = document.getElementById('feedback').value;
+            console.error('TextArea Value---->',textareaValue)
+
+            var feedbackDetails = {}
+            var raw = JSON.stringify({
+                "details": {
+                "companyName": "ZALORA",
+                "feedbackEmoji": feedback,
+                "radioValue": radioFeedback,
+                "textareaValue" : textareaValue
+                }
+            });
+
+            document.getElementById('feedback').value = ''
+            $("#form").trigger("reset");
+            
+            feedbackDetails.data = raw;
+            window.parent.postMessage(JSON.stringify({
+                event_code: 'ym-client-event', data: JSON.stringify({
+                    event: {
+                    code: "feedback",
+                    data: feedbackDetails,
+                
+                    }
+                })
+            }), '*');
+
+            console.log("Feedback Details ---->",feedbackDetails);
+        }
+
+    </script>
 </body>
 </html>

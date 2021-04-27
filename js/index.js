@@ -61,16 +61,6 @@ function details() {
     textareaValue = document.getElementById('feedback').value;
     console.error('TextArea Value---->',textareaValue)
 
-    // $("#main2").show();
-    // feedback2 = document.getElementById("feedback2").value;
-    // console.error(feedback2, "feedback2");
-    // if(feedback2 == 'f7') {
-    //     $("#dropdown").hide();
-    //     $("#textArea").show();
-    // }
-   
-
-   
     var feedbackDetails = {}
     var raw = JSON.stringify({
         "details": {
