@@ -182,11 +182,7 @@
             data.feedback = feedback;
             data.radioButtonValue = radioFeedback
             data.submitDetails = submitDetails;
-            console.error("Data", data);
-            console.log("Data", data);
-
             textareaValue = document.getElementById('feedback').value;
-            console.error('TextArea Value---->',textareaValue)
 
             var feedbackDetails = {}
             var raw = JSON.stringify({
@@ -212,7 +208,6 @@
                 })
             }), '*');
 
-            console.log("Feedback Details ---->",feedbackDetails);
         }
 
     </script>
