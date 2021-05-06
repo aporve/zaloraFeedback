@@ -75,30 +75,36 @@
                     <form class="show" action="#" id="form">
                         <div class="col-lg-12 m-0 pt-1" id="emotican">
                             <ul class="my-5 p-0" style="width: 100%; display: inline-block; list-style: none; margin: 50px 0 0 0;" >
-                                <table>
+                                <table class="m-0" style="width: 100%;">
                                     <tr>
                                         <th>
                                             <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="good()">😄</p>
                                         </th>
                                         <th>
-                                            <p class="mx-3" style="font-size: 5rem; cursor: pointer;" onclick="bad()">😔</p>
+                                            <p style="font-size: 5rem; cursor: pointer;" onclick="bad()">😔</p>
                                         </th>
                                     </tr>
                                     <tr>
-                                        <td class="d-flex justify-content-center">
+                                        <td style="width: 100%;" class="d-flex justify-content-center bg-primary">
                                             GOOD
                                         </td>
-                                        <td>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;BAD
+                                        <td style="width: 100%;" class="bg-secondary">
+                                        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;BAD
                                         </td>
                                     </tr>
                                 </table>
                             </ul>
                         </div> 
-                       <div class="hide" id="textArea">
-                        <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
-                            <textarea id="feedback" placeholder="  Feedback here.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
+                      <div id="error" class="hide">
+                        <div class="d-flex  justify-content-center" style="margin-top: 50px;">
+                            <span><p>Lorem ipsum dolor sit amet.</p></span>
                         </div>
+                      </div>
+                        
+                       <div class="hide" id="textArea">
+                            <div class="col-lg-12 d-flex justify-content-center" style="display: none;" >
+                                <textarea id="feedback" placeholder="  Feedback here.." class="w-75" name="text" cols="30" rows="4" style="resize: none; border: 2px solid #eee;"></textarea>
+                            </div>
                        </div>
 
                         <div class="hide" id="dropdown">
@@ -117,6 +123,8 @@
                             <input type="radio" id="F6" name="reason" onclick="triggerText('F6')" value="Other Feedback">
                             <label for="Other Feedback">Other Feedback</label><br>
                         </div>
+
+                        <div></div>
 
                         <div id="submitBtn" style="display: none;">
                             <div  class="col-lg-12 d-flex justify-content-center my-2" >
@@ -141,7 +149,7 @@
         let radioFeedback;
         let textareaValue ;
 
-
+        var reason = document.getElementsByName("reason");
         function good() {
             feedback = 'good';
             $('#emotican').hide();
@@ -179,34 +187,117 @@
 
         function details() {
             submitDetails = document.getElementById('feedback').value;
-            data.feedback = feedback;
-            data.radioButtonValue = radioFeedback
-            data.submitDetails = submitDetails;
             textareaValue = document.getElementById('feedback').value;
-
-            var feedbackDetails = {}
-            var raw = JSON.stringify({
-                "details": {
-                "companyName": "ZALORA",
-                "feedbackEmoji": feedback,
-                "radioValue": radioFeedback,
-                "textareaValue" : textareaValue
-                }
-            });
-
-            document.getElementById('feedback').value = ''
-            $("#form").trigger("reset");
             
-            feedbackDetails.data = raw;
-            window.parent.postMessage(JSON.stringify({
-                event_code: 'ym-client-event', data: JSON.stringify({
-                    event: {
-                    code: "feedback",
-                    data: feedbackDetails,
-                
+            if((feedback =='good') && (textareaValue !== '')) {
+                $("#error").hide();
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+           
+                console.log('Submit Details---->>', );
+                var feedbackDetails = {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
                     }
-                })
-            }), '*');
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }
+            else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && (reason[0].checked == true)) {
+                $("#error").hide();
+                alert('ho gya')
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+            
+                console.log('Submit Details---->>',data);
+                var feedbackDetails = {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
+                    }
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }else if((feedback =='bad') && (radioFeedback == 'Other Feedback') && (textareaValue !== '')) {
+                $("#error").hide();
+                $("#textArea").css('margin-top', '50px')
+                data.feedback = feedback;
+                data.radioButtonValue = radioFeedback
+                data.submitDetails = submitDetails;
+            
+                console.log('Submit Details---->>',data);
+                var feedbackDetails =  {}
+                var raw = JSON.stringify({
+                    "details": {
+                    "companyName": "ZALORA",
+                    "feedbackEmoji": feedback,
+                    "radioValue": radioFeedback,
+                    "textareaValue" : textareaValue
+                    }
+                });
+
+                document.getElementById('feedback').value = ''
+                $("#form").trigger("reset");
+                
+                feedbackDetails.data = raw;
+                window.parent.postMessage(JSON.stringify({
+                    event_code: 'ym-client-event', data: JSON.stringify({
+                        event: {
+                        code: "feedback",
+                        data: feedbackDetails,
+                    
+                        }
+                    })
+                }), '*');
+
+            }else {
+                $("#error").show();
+                $("#error").css('margin-top', '50px')
+                $("#error").css('margin-left', '35px')
+                $("#error").css('margin-bottom', '5px')
+                $("#error").css('color', 'red')
+                $("#textArea").css('margin-top', '0px')                
+                $("#error").text('Mohon berikan umpan balik...')
+            }
+
+
 
         }
 
