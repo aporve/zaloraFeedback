@@ -224,7 +224,6 @@
             }
             else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && (reason[0].checked == true)) {
                 $("#error").hide();
-                alert('ho gya')
                 $("#textArea").css('margin-top', '50px')
                 data.feedback = feedback;
                 data.radioButtonValue = radioFeedback
@@ -287,6 +286,14 @@
                     })
                 }), '*');
 
+            }else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == false) || (reason[1].checked == false) || (reason[2].checked == false) || (reason[3].checked == false)|| (reason[4].checked == false)|| (reason[5].checked == false))) {
+                $("#error").show();
+                $("#error").css('margin-top', '20px')
+                $("#error").css('margin-left', '35px')
+                $("#error").css('margin-bottom', '5px')
+                $("#error").css('color', 'red')
+                $("#error").text('Mohon berikan umpan balik...')
+                
             }else {
                 $("#error").show();
                 $("#error").css('margin-top', '50px')
