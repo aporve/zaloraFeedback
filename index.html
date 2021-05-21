@@ -20,7 +20,7 @@
         }
 
         .main {
-            max-width: 300px;
+            width: 300px;
             min-height: 350px;
             border-radius: 10px;
             box-shadow: 0px 10px 15px rgba(0,0,0,0.2);
@@ -136,6 +136,11 @@
                         <p id="main2" class="hide">Thank you For the Feedback</p>
                   </div> -->
                 </div>
+                    <div class="hide" id="greeting" style="width: 100%; position: absolute; height: 80%;">
+                        <div class="greeting col-lg-12 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p id="main2" class="">Thank you for the feedback</p>
+                    </div>
+                </div>
             </div>
 
    </section>
@@ -221,7 +226,10 @@
                         }
                     })
                 }), '*');
-
+                $("#submitBtn").hide();
+                $("#textArea").hide();
+                $("#error").hide();
+                $("#greeting").show();
             }
             else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == true) || (reason[1].checked == true) || (reason[2].checked == true) || (reason[3].checked == true)|| (reason[4].checked == true))) {
                 $("#error").hide();
@@ -254,6 +262,9 @@
                         }
                     })
                 }), '*');
+                $("#dropdown").hide();
+                $('#submitBtn').hide();
+                $("#greeting").show();
 
             }else if((feedback =='bad') && (radioFeedback == 'Other Feedback') && (textareaValue !== '')) {
                 $("#error").hide();
@@ -286,7 +297,10 @@
                         }
                     })
                 }), '*');
-
+                $("#submitBtn").hide();
+                $("#textArea").hide();
+                $("#error").hide();
+                $("#greeting").show();
             }else if((feedback =='bad') && (radioFeedback !== 'Other Feedback') && ((reason[0].checked == false) || (reason[1].checked == false) || (reason[2].checked == false) || (reason[3].checked == false)|| (reason[4].checked == false)|| (reason[5].checked == false))) {
                 $("#error").show();
                 $("#error").css('margin-top', '10px')
